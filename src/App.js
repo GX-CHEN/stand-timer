@@ -4,8 +4,10 @@ import Donut from "./components/Donut";
 
 function App() {
   return (
-    <div className="App">
-      <Donut />
+    <div className="main-container">
+      <div className="chart-container">
+        <Donut />
+      </div>
     </div>
   );
 }

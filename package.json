@@ -1,5 +1,6 @@
 {
   "name": "stand-timer",
+  "homepage": "https://gx-chen.github.io/stand-timer",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
