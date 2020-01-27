@@ -1,5 +1,6 @@
 import React from "react";
 import { PieChart, Pie, Cell } from "recharts";
+import "./Donut.css";
 
 const data = [
   { name: "Group A", value: 200 },
@@ -7,7 +8,7 @@ const data = [
   { name: "Group C", value: 200 },
   { name: "Group D", value: 200 }
 ];
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const COLORS = ["#FF8042", "#FFBB28", "#00C49F", "#0088FE"];
 
 export default class Donut extends React.Component {
   constructor(props) {
@@ -18,36 +19,57 @@ export default class Donut extends React.Component {
   }
 
   componentDidMount = () => {
-    setInterval(() =>
-      this.setState({
-        timeRemain: this.state.timeRemain - 1
-      }), 1000
+    setInterval(
+      () =>
+        this.setState({
+          timeRemain: this.state.timeRemain - 1
+        }),
+      1000
     );
   };
 
+  reset = () => {
+    this.setState({ timeRemain: 60 });
+  };
+
   render() {
-    const endAngle = 180 - this.state.timeRemain * 6;
-    console.log(endAngle);
+    const { timeRemain } = this.state;
+    const endAngle = 180 - timeRemain * 6;
+    const textColor =
+      timeRemain > 0 ? COLORS[timeRemain % COLORS.length] : "red";
+
+    const fillColor =
+      timeRemain > 0
+        ? COLORS[Math.floor((timeRemain - 1) / 15) % COLORS.length]
+        : "red";
     return (
-      <PieChart width={400} height={400} onMouseEnter={this.onPieEnter}>
-        <Pie
-          data={data}
-          cx={200}
-          cy={200}
-          startAngle={180}
-          endAngle={endAngle}
-          innerRadius={120}
-          outerRadius={160}
-          fill="#8884d8"
-          paddingAngle={2}
-          dataKey="value"
-          animationDuration={600}
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-      </PieChart>
+      <React.Fragment>
+        <div className="number-count-container">
+          <div className="number-count" style={{ color: textColor }}>
+            {this.state.timeRemain}
+          </div>
+        </div>
+
+        <PieChart width={400} height={400} onClick={this.reset}>
+          <Pie
+            data={data}
+            cx={200}
+            cy={200}
+            startAngle={180}
+            endAngle={endAngle}
+            innerRadius={120}
+            outerRadius={160}
+            fill="#8884d8"
+            paddingAngle={2}
+            dataKey="value"
+            animationDuration={600}
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={fillColor} />
+            ))}
+          </Pie>
+        </PieChart>
+      </React.Fragment>
     );
   }
 }

@@ -1,0 +1,12 @@
+.number-count-container {
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    display: flex;
+}
+  
+.number-count {
+  margin: auto;
+  font-size: 100px;
+  font-weight: 800;
+}
