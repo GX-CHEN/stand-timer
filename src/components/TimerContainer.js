@@ -50,15 +50,15 @@ export default class Donut extends React.Component {
           </div>
         </div>
 
-        <PieChart width={400} height={400} onClick={this.reset}>
+        <PieChart width={300} height={300} onClick={this.reset}>
           <Pie
             data={data}
-            cx={200}
-            cy={200}
+            cx={150}
+            cy={150}
             startAngle={180}
             endAngle={endAngle}
-            innerRadius={120}
-            outerRadius={160}
+            innerRadius={90}
+            outerRadius={120}
             fill="#8884d8"
             paddingAngle={2}
             dataKey="value"
