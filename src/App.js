@@ -6,6 +6,7 @@ import Emoticon from "./components/Emoticon";
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.audio = new Audio("go.mp3");
     this.state = {
       totalTime: 30,
       timeRemain: 30
@@ -27,6 +28,9 @@ class App extends React.Component {
   };
 
   render() {
+    if (this.state.timeRemain === 0) {
+      this.audio.play();
+    }
     return (
       <div className="main-container">
         <div className="chart-container" onClick={this.reset}>
@@ -36,9 +40,7 @@ class App extends React.Component {
           />
         </div>
         <div className="emo-container">
-          <Emoticon
-            timeRemain={this.state.timeRemain}
-          />
+          <Emoticon timeRemain={this.state.timeRemain} />
         </div>
       </div>
     );
