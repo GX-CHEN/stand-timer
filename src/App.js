@@ -8,8 +8,8 @@ class App extends React.Component {
     super(props);
     this.audio = new Audio("go.mp3");
     this.state = {
-      totalTime: 30,
-      timeRemain: 30
+      totalTime: 60,
+      timeRemain: 60
     };
   }
 
