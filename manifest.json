@@ -3,9 +3,8 @@
   "short_name": "Timer",
   "theme_color": "#2196f3",
   "background_color": "#ffffff",
+  "start_url": ".",
   "display": "standalone",
-  "Scope": "/",
-  "start_url": "/",
   "icons": [
     {
       "src": "images/icon-72x72.png",
