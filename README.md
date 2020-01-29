@@ -1,6 +1,9 @@
 # stand-timer
 Timer used for 60 seconds stand up
 
+## URL
+https://gx-chen.github.io/stand-timer/
+
 ## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
