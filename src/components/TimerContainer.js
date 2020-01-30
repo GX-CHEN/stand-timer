@@ -27,11 +27,11 @@ export default class TimerContainer extends React.Component {
           </div>
         </div>
 
-        <PieChart width={300} height={300}>
+        <PieChart width={260} height={260}>
           <Pie
             data={data}
-            cx={150}
-            cy={150}
+            cx={130}
+            cy={130}
             startAngle={180}
             endAngle={endAngle}
             innerRadius={90}

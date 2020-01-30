@@ -1,7 +1,9 @@
 import React from "react";
+import "antd/dist/antd.css";
 import "./App.css";
 import TimerContainer from "./components/TimerContainer";
 import Emoticon from "./components/Emoticon";
+import Selector from "./components/Selector";
 
 class App extends React.Component {
   constructor(props) {
@@ -33,13 +35,20 @@ class App extends React.Component {
     }
     return (
       <div className="main-container">
+        <div className="selector-container">
+          <Selector
+            durationClick={seconds => {
+              this.setState({ totalTime: seconds, timeRemain: seconds });
+            }}
+          />
+        </div>
         <div className="chart-container" onClick={this.reset}>
           <TimerContainer
             timeRemain={this.state.timeRemain}
             totalTime={this.state.totalTime}
           />
         </div>
-        <div className="emo-container">
+        <div className="emo-container" onClick={this.reset}>
           <Emoticon timeRemain={this.state.timeRemain} />
         </div>
       </div>
