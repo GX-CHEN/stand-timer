@@ -10,3 +10,13 @@
   font-size: 66px;
   font-weight: 800;
 }
+
+.gif-container {
+  padding-top: 20px;
+  height: 260px;
+  width: 260px;
+}
+
+.gif-img {
+  width: 100%;
+}

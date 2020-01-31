@@ -14,6 +14,12 @@ export default class TimerContainer extends React.Component {
   render() {
     const { timeRemain, totalTime } = this.props;
     const endAngle = 180 - timeRemain * (360 / totalTime);
+    const showGif = timeRemain < 1 && timeRemain > -6;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const isJake = urlParams ? urlParams.get("mode") === "jake" : false;
+
+    const imgSrc = isJake ? "./images/jack.gif" : "./images/minion-what.gif";
 
     const fillColor =
       timeRemain > 0
@@ -27,25 +33,33 @@ export default class TimerContainer extends React.Component {
           </div>
         </div>
 
-        <PieChart width={260} height={260}>
-          <Pie
-            data={data}
-            cx={130}
-            cy={130}
-            startAngle={180}
-            endAngle={endAngle}
-            innerRadius={90}
-            outerRadius={120}
-            fill="#8884d8"
-            paddingAngle={2}
-            dataKey="value"
-            animationDuration={600}
-          >
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={fillColor} />
-            ))}
-          </Pie>
-        </PieChart>
+        {showGif && (
+          <div className="gif-container">
+            <img src={imgSrc} alt="what?" className="gif-img" />
+          </div>
+        )}
+
+        {!showGif && (
+          <PieChart width={260} height={260}>
+            <Pie
+              data={data}
+              cx={130}
+              cy={130}
+              startAngle={180}
+              endAngle={endAngle}
+              innerRadius={90}
+              outerRadius={120}
+              fill="#8884d8"
+              paddingAngle={2}
+              dataKey="value"
+              animationDuration={600}
+            >
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={fillColor} />
+              ))}
+            </Pie>
+          </PieChart>
+        )}
       </React.Fragment>
     );
   }
