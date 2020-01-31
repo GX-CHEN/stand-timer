@@ -1,22 +1,27 @@
 import React from "react";
 
-const happyEmos = ['(*^▽^*)', '٩(✿∂‿∂✿)۶', '(*≧▽≦)','(•‿•)', '( ⋂‿⋂’)', '( ´͈ ◡ `͈ )'];
-const angryEmos = ['ಠ_ಠ', 'ಠ▃ಠ', '(;¬_¬)', '(;° ロ°)','(๑•﹏•)','◑.◑'];
+const happyEmos = [
+  "(*^▽^*)",
+  "٩(✿∂‿∂✿)۶",
+  "(*≧▽≦)",
+  "(•‿•)",
+  "( ⋂‿⋂’)",
+  "( ´͈ ◡ `͈ )"
+];
+const angryEmos = ["ಠ_ಠ", "ಠ▃ಠ", "(;¬_¬)", "(;° ロ°)", "(๑•﹏•)", "◑.◑"];
 
 export default class TimerContainer extends React.Component {
   render() {
-    const { timeRemain } = this.props;
-    let currentEmo = '';
+    const { timeRemain, totalTime } = this.props;
+    let currentEmo = "";
 
-    if (timeRemain > 0) {
-      currentEmo = happyEmos[Math.floor(Math.random()*happyEmos.length)];
+    if (timeRemain < 0) {
+      currentEmo = angryEmos[Math.floor(Math.random() * angryEmos.length)];
+    } else if (totalTime / timeRemain > 4) {
+      currentEmo = <div style={{ color: "#FF8042" }}>"⊙△⊙"</div>;
     } else {
-      currentEmo = angryEmos[Math.floor(Math.random()*angryEmos.length)];
+      currentEmo = happyEmos[Math.floor(Math.random() * happyEmos.length)];
     }
-    return (
-      <div className='emo-container'>
-        {currentEmo}
-      </div>
-    );
+    return <div className="emo-container">{currentEmo}</div>;
   }
 }

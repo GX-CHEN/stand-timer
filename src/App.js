@@ -37,6 +37,7 @@ class App extends React.Component {
       <div className="main-container">
         <div className="selector-container">
           <Selector
+            totalTime={this.state.totalTime}
             durationClick={seconds => {
               this.setState({ totalTime: seconds, timeRemain: seconds });
             }}
@@ -49,7 +50,10 @@ class App extends React.Component {
           />
         </div>
         <div className="emo-container" onClick={this.reset}>
-          <Emoticon timeRemain={this.state.timeRemain} />
+          <Emoticon
+            timeRemain={this.state.timeRemain}
+            totalTime={this.state.totalTime}
+          />
         </div>
       </div>
     );

@@ -3,20 +3,45 @@ import { Dropdown, Menu, Button } from "antd";
 
 export default class Selector extends React.Component {
   render() {
-    const { durationClick } = this.props;
+    const { durationClick, totalTime } = this.props;
     const menu = (
       <Menu>
-        <Menu.Item onClick={() => durationClick(180)}>180 seconds</Menu.Item>
-        <Menu.Item onClick={() => durationClick(120)}>120 seconds</Menu.Item>
-        <Menu.Item onClick={() => durationClick(60)}>60 seconds</Menu.Item>
-        <Menu.Item onClick={() => durationClick(30)}>30 seconds</Menu.Item>
-        <Menu.Item onClick={() => durationClick(10)}>10 seconds</Menu.Item>
+        <Menu.Item
+          onClick={() => durationClick(180)}
+          className="centered large-font"
+        >
+          180
+        </Menu.Item>
+        <Menu.Item
+          onClick={() => durationClick(120)}
+          className="centered large-font"
+        >
+          120
+        </Menu.Item>
+        <Menu.Item
+          onClick={() => durationClick(60)}
+          className="centered large-font"
+        >
+          60
+        </Menu.Item>
+        <Menu.Item
+          onClick={() => durationClick(30)}
+          className="centered large-font"
+        >
+          30
+        </Menu.Item>
+        <Menu.Item
+          onClick={() => durationClick(10)}
+          className="centered large-font"
+        >
+          10
+        </Menu.Item>
       </Menu>
     );
 
     return (
       <Dropdown overlay={menu} placement="bottomCenter">
-        <Button>Select Time</Button>
+        <Button size="large">{totalTime} sec</Button>
       </Dropdown>
     );
   }
