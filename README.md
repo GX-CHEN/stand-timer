@@ -1,8 +1,9 @@
 # stand-timer
-Timer used for 60 seconds stand up
+Timer used for short daily stand up, default to 30 seconds. Have a few available duration choices
 
 ## URL
 https://gx-chen.github.io/stand-timer/
+https://jackadvisor.com/timer/
 
 ## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
