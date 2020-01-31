@@ -8,7 +8,7 @@ import Selector from "./components/Selector";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.audio = new Audio("go.mp3");
+    this.audio = new Audio("timeup.mp3");
     this.state = {
       totalTime: 60,
       timeRemain: 60
