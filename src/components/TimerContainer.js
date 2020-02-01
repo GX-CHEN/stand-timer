@@ -31,7 +31,7 @@ export default class TimerContainer extends React.Component {
     const showGif = timeRemain < 1 && timeRemain > -6;
 
     const urlParams = new URLSearchParams(window.location.search);
-    const isJack = urlParams ? urlParams.get("mode") === "jake" : false;
+    const isJack = urlParams ? urlParams.get("mode") === "jack" : false;
     if (isJack) {
       this.imgSrc = "./images/jack.gif";
     }
