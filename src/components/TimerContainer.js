@@ -11,30 +11,10 @@ const data = [
 const COLORS = ["#FF8042", "#FFBB28", "#00C49F", "#0088FE"];
 
 export default class TimerContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.finalGifs = [
-      "./images/minion-what.gif",
-      "./images/timeup.gif",
-      "./images/too-much-info.gif",
-      "./images/please-stop.gif"
-    ];
-
-    this.imgSrc = this.finalGifs[
-      Math.floor(Math.random() * this.finalGifs.length)
-    ];
-  }
-
   render() {
     const { timeRemain, totalTime } = this.props;
     const endAngle = 180 - timeRemain * (360 / totalTime);
     const showGif = timeRemain < 1 && timeRemain > -6;
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const isJack = urlParams ? urlParams.get("mode") === "jack" : false;
-    if (isJack) {
-      this.imgSrc = "./images/jack.gif";
-    }
 
     const fillColor =
       timeRemain > 0
@@ -50,7 +30,7 @@ export default class TimerContainer extends React.Component {
 
         {showGif && (
           <div className="gif-container">
-            <img src={this.imgSrc} alt="time is up" className="gif-img" />
+            <img src={this.props.imgSrc} alt="time is up" className="gif-img" />
           </div>
         )}
 
